@@ -1,164 +1,223 @@
-/* === Modern Professional Dashboard === */
-.dashboard-container {
+/* === FULL-SCREEN SMART STREETLIGHT DASHBOARD === */
+
+/* Full width outer background */
+.dashboard-shell {
+  width: 100%;
   min-height: 100vh;
-  background: linear-gradient(145deg, #0d1b2a, #1b263b, #0a192f);
-  color: #f1f5f9;
-  font-family: "Segoe UI", "Roboto", sans-serif;
-  padding: 25px 15px 60px;
+  background: radial-gradient(circle at top, #0d1b2a 0%, #0a1322 80%);
+  padding: 0;
+  margin: 0;
+}
+
+/* MOBILE FIRST */
+.dashboard-frame {
+  width: 100%;
+  background: rgba(15, 23, 37, 0.92);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 30px;
+}
+
+/* DESKTOP: FILL ENTIRE SCREEN */
+@media (min-width: 900px) {
+  .dashboard-frame {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+/* ===================== */
+/* TOP BAR */
+/* ===================== */
+.topbar {
+  width: 100%;
+  padding: 16px 24px;
+  background: rgba(12, 20, 32, 0.85);
+  border-bottom: 1px solid rgba(0,170,255,0.25);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  backdrop-filter: blur(6px);
 }
 
-.dashboard-title {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #00aaff;
-  text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
-  margin-bottom: 30px;
+.brand {
+  font-size: 1.4rem;
+  color: #8bd0ff;
+  font-weight: 700;
 }
 
-.error-box {
-  background-color: rgba(255, 0, 0, 0.15);
-  border: 1px solid #ff5555;
-  color: #ff9999;
-  padding: 10px 15px;
-  text-align: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  max-width: 500px;
-  width: 100%;
+.mode-bar {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(0,170,255,0.2);
 }
 
-.grid-container {
+.mode-btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: #cbe7ff;
+  border-radius: 16px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mode-btn.active {
+  background: #00aaff;
+  color: #04131e;
+}
+
+.mode-chip {
+  margin-left: 10px;
+  font-size: 11px;
+  padding: 5px 10px;
+  color: #8bd0ff;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+}
+
+/* ===================== */
+/* GRID */
+/* ===================== */
+.cards-grid {
   display: grid;
-  gap: 20px;
   width: 100%;
-  max-width: 1100px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  justify-content: center;
-  align-items: start;
+  padding: 24px;
+  gap: 24px;
 }
 
-.light-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 170, 255, 0.25);
-  border-radius: 14px;
+/* Mobile */
+@media (max-width: 600px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop full width */
+@media (min-width: 900px) {
+  .cards-grid {
+    max-width: 1600px;  /* keeps cards centered but full width usable */
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
+}
+
+/* ===================== */
+/* CARD */
+/* ===================== */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,170,255,0.25);
   padding: 20px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 170, 255, 0.05);
+  border-radius: 16px;
+  transition: 0.3s;
+  backdrop-filter: blur(4px);
 }
 
-.light-card:hover {
-  transform: translateY(-4px);
-  border-color: #00aaff;
-  box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0,170,255,0.2);
 }
 
-.card-header {
+/* Title */
+.card-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.card-header h2 {
-  font-size: 1.1rem;
-  color: #00aaff;
-  font-weight: 500;
-}
-
-.icon {
-  transition: color 0.3s ease;
-}
-
-.icon-on {
-  color: #ffc107;
-}
-
-.icon-off {
-  color: #444;
-}
-
-.card-info {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #cdd6f4;
-  margin-bottom: 15px;
-}
-
-.status-on {
-  color: #00ff99;
-  font-weight: 600;
-}
-
-.status-off {
-  color: #ff4d4d;
-  font-weight: 600;
-}
-
-.button-row {
+.card-title {
   display: flex;
   gap: 10px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  font-size: 1.1rem;
+  color: #9bd5ff;
+  font-weight: 700;
+}
+
+/* Status */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-dot.on {
+  background: #ffd558;
+  box-shadow: 0 0 10px rgba(255,213,88,0.6);
+}
+
+.status-dot.off {
+  background: #2c3341;
+}
+
+/* Telemetry */
+.telemetry {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  color: #d8e7f7;
+  font-size: 0.94rem;
+}
+
+/* Buttons */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .btn {
   flex: 1;
-  min-width: 110px;
-  padding: 8px 0;
+  padding: 10px 0;
+  border-radius: 12px;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: all 0.25s ease;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
 }
 
-.btn-on {
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn.on {
   background: #00aaff;
-  color: white;
+  color: #02141c;
 }
 
-.btn-on:hover {
-  background: #0091dd;
-  box-shadow: 0 0 12px rgba(0, 170, 255, 0.5);
+.btn.dim {
+  background: #60e6a6;
+  color: #021710;
 }
 
-.btn-off {
+.btn.off {
   background: #ff4d4d;
   color: white;
 }
 
-.btn-off:hover {
-  background: #e63b3b;
-  box-shadow: 0 0 12px rgba(255, 77, 77, 0.5);
-}
-
-/* --- Responsive adjustments --- */
-@media (max-width: 768px) {
-  .dashboard-title {
-    font-size: 1.5rem;
-  }
-
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
-
-  .light-card {
-    padding: 18px;
-  }
-
-  .button-row {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-  }
+/* Error box */
+.error-box {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff6666;
+  padding: 12px;
+  text-align: center;
+  margin: 20px;
+  border-radius: 12px;
 }
