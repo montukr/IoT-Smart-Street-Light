@@ -1,6 +1,5 @@
 /* === FULL-SCREEN SMART STREETLIGHT DASHBOARD === */
 
-/* Full width outer background */
 .dashboard-shell {
   width: 100%;
   min-height: 100vh;
@@ -9,7 +8,6 @@
   margin: 0;
 }
 
-/* MOBILE FIRST */
 .dashboard-frame {
   width: 100%;
   background: rgba(15, 23, 37, 0.92);
@@ -18,7 +16,6 @@
   padding-bottom: 30px;
 }
 
-/* DESKTOP: FILL ENTIRE SCREEN */
 @media (min-width: 900px) {
   .dashboard-frame {
     width: 100%;
@@ -36,7 +33,7 @@
   width: 100%;
   padding: 16px 24px;
   background: rgba(12, 20, 32, 0.85);
-  border-bottom: 1px solid rgba(0,170,255,0.25);
+  border-bottom: 1px solid rgba(0, 170, 255, 0.25);
   display: flex;
   align-items: center;
   backdrop-filter: blur(6px);
@@ -53,9 +50,9 @@
   display: flex;
   gap: 6px;
   padding: 4px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  border: 1px solid rgba(0,170,255,0.2);
+  border: 1px solid rgba(0, 170, 255, 0.2);
 }
 
 .mode-btn {
@@ -79,13 +76,105 @@
   font-size: 11px;
   padding: 5px 10px;
   color: #8bd0ff;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
 }
 
 /* ===================== */
-/* GRID */
+/* ERROR BOX */
+/* ===================== */
+.error-box {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff6666;
+  padding: 12px;
+  text-align: center;
+  margin: 20px;
+  border-radius: 12px;
+  color: #fecaca;
+}
+
+/* ===================== */
+/* ENERGY GRAPH PANEL */
+/* ===================== */
+.energy-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 12px 24px 0;
+}
+
+.energy-panel {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto 12px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  padding: 10px 14px 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+}
+
+.energy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e0f2fe;
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.energy-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #bae6fd;
+}
+
+.backend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.backend-dot.ok {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.backend-dot.bad {
+  background: #f97316;
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.6);
+}
+
+.energy-graph {
+  width: 100%;
+  display: block;
+}
+
+.energy-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.energy-empty {
+  padding: 12px;
+  font-size: 0.85rem;
+  color: #cbd5f5;
+}
+
+.energy-paused {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: #f97316;
+}
+
+/* ===================== */
+/* GRID OF LIGHT CARDS */
 /* ===================== */
 .cards-grid {
   display: grid;
@@ -94,24 +183,21 @@
   gap: 24px;
 }
 
-/* Mobile */
 @media (max-width: 600px) {
   .cards-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Tablet */
 @media (min-width: 600px) and (max-width: 900px) {
   .cards-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop full width */
 @media (min-width: 900px) {
   .cards-grid {
-    max-width: 1600px;  /* keeps cards centered but full width usable */
+    max-width: 1600px;
     margin: 0 auto;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   }
@@ -121,8 +207,8 @@
 /* CARD */
 /* ===================== */
 .card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(0,170,255,0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 170, 255, 0.25);
   padding: 20px;
   border-radius: 16px;
   transition: 0.3s;
@@ -131,7 +217,7 @@
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(0,170,255,0.2);
+  box-shadow: 0 10px 26px rgba(0, 170, 255, 0.2);
 }
 
 /* Title */
@@ -149,7 +235,7 @@
   font-weight: 700;
 }
 
-/* Status */
+/* Status dot */
 .status-dot {
   width: 12px;
   height: 12px;
@@ -158,7 +244,7 @@
 
 .status-dot.on {
   background: #ffd558;
-  box-shadow: 0 0 10px rgba(255,213,88,0.6);
+  box-shadow: 0 0 10px rgba(255, 213, 88, 0.6);
 }
 
 .status-dot.off {
@@ -175,7 +261,9 @@
   font-size: 0.94rem;
 }
 
-/* Buttons */
+/* ===================== */
+/* BUTTONS */
+/* ===================== */
 .controls {
   display: flex;
   gap: 12px;
@@ -212,12 +300,25 @@
   color: white;
 }
 
-/* Error box */
-.error-box {
-  background: rgba(255, 0, 0, 0.1);
-  border: 1px solid #ff6666;
-  padding: 12px;
-  text-align: center;
-  margin: 20px;
-  border-radius: 12px;
+.energy-toggle-row {
+  display: flex;
+  justify-content: center;
+  padding: 6px 24px 10px;
 }
+
+.energy-toggle-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e0f2fe;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.energy-toggle-btn:hover {
+  background: rgba(56, 189, 248, 0.16);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+}
+
