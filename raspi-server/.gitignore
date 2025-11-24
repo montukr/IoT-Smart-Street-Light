@@ -53,6 +53,7 @@ build/
 develop-eggs/
 dist/
 .installed.cfg
+.DS_Store
 
 # Flask / runtime
 instance/
