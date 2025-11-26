@@ -1,0 +1,92 @@
+############################
+# OS / Editor junk (all dirs)
+############################
+# macOS Finder
+.DS_Store
+**/.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Vim / editors
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+*.lock
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+*.code-workspace
+
+############################
+# Raspi server (Python)
+############################
+# Virtual envs
+myenv/
+venv/
+env/
+.venv/
+
+# Python cache / build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+.installed.cfg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Flask / runtime
+instance/
+*.sqlite3
+*.db
+
+# Logs
+*.log
+raspi-server.log
+
+# AWS / certs / secrets
+certs/
+*.pem
+*.key
+*.crt
+*.der
+aws_credentials.json
+aws_secrets.json
+.env
+.env.*
+
+############################
+# Client (React / Vite)
+############################
+# Logs
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node deps / builds
+node_modules/
+dist/
+dist-ssr/
+client/dist/
+client/.vite/
+
+# Local env/config
+*.local
+.env.local
+.env.development.local
+.env.production.local
+
+# Editor (client-specific, if any)
+client/.vscode/
